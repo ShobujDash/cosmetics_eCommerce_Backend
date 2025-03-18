@@ -20,7 +20,7 @@ export const checkCartKey = (req, res, next) => {
     const options = {
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: false, // লোকালহোস্টে `false` দাও
+      secure: true, // লোকালহোস্টে `false` দাও
       sameSite: "None", // লোকালহোস্টের জন্য `Lax` ভালো
     };
     res.cookie("cart_key", token, options);
