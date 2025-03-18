@@ -27,6 +27,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(cookieParser());
 app.use(
   cors({
     // origin: "http://localhost:3000",
@@ -38,7 +39,7 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 
 app.use(morgan("dev"));
 // Updated static file serving
