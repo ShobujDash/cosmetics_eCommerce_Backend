@@ -30,9 +30,8 @@ const __dirname = path.dirname(__filename);
 app.use(cookieParser());
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://ecom-cosmetics-frotend-next.vercel.app",
-    credentials: true, // Allow credentials (cookies)
+    origin:"http://localhost:3000",
+    credentials: true, // Cookie Enable করার জন্য
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
