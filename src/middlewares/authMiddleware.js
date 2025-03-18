@@ -14,8 +14,8 @@ export const checkCartKey = (req, res, next) => {
     const options = {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: true, // Will work over HTTPS
-      sameSite: "None", // Allows cross-site cookies
+      secure: false, // Will work over HTTPS
+      sameSite: "Lax", // Allows cross-site cookies
     };
     res.cookie("cart_key", token, options);
     req.cartKey = cartKey;
