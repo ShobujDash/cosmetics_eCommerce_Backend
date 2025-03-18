@@ -11,11 +11,17 @@ export const checkCartKey = (req, res, next) => {
     const cartKey = uuidv4();
     const token = jwt.sign({ cartKey }, SECRET_KEY, { expiresIn: "7d" });
 
+    // const options = {
+    //   expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    //   httpOnly: true,
+    //   secure: true, // Will work over HTTPS
+    //   sameSite: "None", // Allows cross-site cookies
+    // };
     const options = {
-      expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: true, // Will work over HTTPS
-      sameSite: "None", // Allows cross-site cookies
+      secure: false, // লোকালহোস্টে `false` দাও
+      sameSite: "Lax", // লোকালহোস্টের জন্য `Lax` ভালো
     };
     res.cookie("cart_key", token, options);
     req.cartKey = cartKey;
